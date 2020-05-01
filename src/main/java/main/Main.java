@@ -1,6 +1,5 @@
 package main;
 
-import specification.specification.AbstractToIsRunImplBaseImpl;
 import io.grpc.Server;
 import io.grpc.inprocess.InProcessChannelBuilder;
 import io.grpc.inprocess.InProcessServerBuilder;
@@ -9,6 +8,7 @@ import run.input.IsInput;
 import run.run.NotRun;
 import run.run.ToIsRunGrpc;
 import specification.output.IsOutput;
+import specification.specification.AbstractToIsRunImplBaseImpl;
 import specification.specification.IsSpecification;
 
 import java.io.File;
@@ -18,29 +18,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Logger;
 
 final public class Main extends AbstractToIsRunImplBaseImpl {
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final Logger log = Logger.getLogger(Main.class.getName());
 
-        final String appState = System.getenv("app_state");
+        final String appState = System.getProperty("appState",
+                System.getenv("app_state"));
         if (appState == null || appState.isEmpty()) {
             throw new IllegalStateException("app_state environment variable not set");
         } else {
             System.out.println("app_state=" + appState);
         }
 
-        final String appName = System.getenv("app_name");
+        final String appName = System.getProperty("appName",
+                System.getenv("app_name"));
         if (appName == null || appName.isEmpty()) {
             throw new IllegalStateException("app_name environment variable not set");
         } else {
             System.out.println("app_name=" + appName);
         }
 
-        final String appDomain = System.getenv("app_domain");
+        final String appDomain = System.getProperty("appDomain",
+                System.getenv("app_domain"));
         if (appDomain == null || appDomain.isEmpty()) {
             throw new IllegalStateException("app_domain environment variable not set");
         } else {
