@@ -66,4 +66,28 @@
         </extensions>
     </build>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>cloud-artifacts</id>
+            <url>artifactregistry://europe-maven.pkg.dev/tough-transport-214713/state</url>
+        </snapshotRepository>
+        <repository>
+            <id>cloud-artifacts</id>
+            <url>artifactregistry://europe-maven.pkg.dev/tough-transport-214713/state</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>cloud-artifacts</id>
+            <url>artifactregistry://europe-maven.pkg.dev/tough-transport-214713/state</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
 </project>
